@@ -49,6 +49,7 @@ overflow: visible;
 }
 </style>
 <style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -373,10 +374,11 @@ theory will not be developed except in the minimum necessary terms; for
 more information, please refer to the bibliography cited here.</p>
 <p>First of all, import the package.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(FVDDPpkg)</span></code></pre></div>
-<p>As shown in the work of <span class="citation">Papaspiliopoulos,
-Ruggiero, and Spanò (2016)</span> Fleming-Viot Dependent Dirichlet
-Processes (FVDDP), conditioned on observed data <span class="math inline">\(Y\)</span>, take the general form of finite
-mixtures of Dirichlet Processes: in fact <span class="math display">\[X_t \ | \ Y \sim \sum_{\mathbf{m} \in M}
+<p>As shown in the work of <span class="citation">Papaspiliopoulos et
+al. (2016)</span> Fleming-Viot Dependent Dirichlet Processes (FVDDP),
+conditioned on observed data <span class="math inline">\(Y\)</span>,
+take the general form of finite mixtures of Dirichlet Processes: in fact
+<span class="math display">\[X_t \ | \ Y \sim \sum_{\mathbf{m} \in M}
 w_\mathbf{m}\Pi_{\alpha + \sum_{j=1}^K m_j \delta_{y_j^\ast}}\]</span>
 where</p>
 <ul>
@@ -435,13 +437,15 @@ function returns an object of class <code>fvddp</code>.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>FVDDP</span>
 <span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="co">#&gt; theta: 1.28 </span></span>
 <span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="co">#&gt; P0.sample: function(x) rpois(x, 5)</span></span>
-<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="co">#&gt; P0.density/mass: function(x) dpois(x, 5)</span></span>
-<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="co">#&gt; is.atomic: TRUE </span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="co">#&gt; P0.sample: function (x) </span></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="co">#&gt; rpois(x, 5)</span></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="co">#&gt; P0.density/mass: function (x) </span></span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="co">#&gt; dpois(x, 5)</span></span>
 <span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a><span class="co">#&gt; Empty Process</span></span></code></pre></div>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a><span class="co">#&gt; is.atomic: TRUE </span></span>
+<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a><span class="co">#&gt; Empty Process</span></span></code></pre></div>
 <p>In this chunk of code, for example, <span class="math inline">\(\theta = 1.28\)</span> and <span class="math inline">\(P_0 \sim \mathrm{Po(5)}\)</span>. Note that when
 printing the process, it is explicitly stated that no data has been
 included within the model.</p>
@@ -476,21 +480,23 @@ associated to the <span class="math inline">\(j\)</span>-th row of
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>FVDDP</span>
 <span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="co">#&gt; theta: 1.28 </span></span>
 <span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="co">#&gt; P0.sample: function(x) rpois(x, 5)</span></span>
-<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="co">#&gt; P0.density/mass: function(x) dpois(x, 5)</span></span>
-<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="co">#&gt; is.atomic: TRUE </span></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="co">#&gt; P0.sample: function (x) </span></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="co">#&gt; rpois(x, 5)</span></span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="co">#&gt; P0.density/mass: function (x) </span></span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="co">#&gt; dpois(x, 5)</span></span>
 <span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a><span class="co">#&gt; Unique values (y.star): </span></span>
-<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a><span class="co">#&gt; [1] 4 7 9</span></span>
-<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a><span class="co">#&gt; Multiplicities (M): </span></span>
-<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a><span class="co">#&gt;      4 7 9</span></span>
-<span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a><span class="co">#&gt; [1,] 1 2 1</span></span>
-<span id="cb5-16"><a href="#cb5-16" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb5-17"><a href="#cb5-17" tabindex="-1"></a><span class="co">#&gt; Weights (w): </span></span>
-<span id="cb5-18"><a href="#cb5-18" tabindex="-1"></a><span class="co">#&gt; [1] 1</span></span></code></pre></div>
+<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a><span class="co">#&gt; is.atomic: TRUE </span></span>
+<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a><span class="co">#&gt; Unique values (y.star): </span></span>
+<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a><span class="co">#&gt; [1] 4 7 9</span></span>
+<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a><span class="co">#&gt; Multiplicities (M): </span></span>
+<span id="cb5-16"><a href="#cb5-16" tabindex="-1"></a><span class="co">#&gt;      4 7 9</span></span>
+<span id="cb5-17"><a href="#cb5-17" tabindex="-1"></a><span class="co">#&gt; [1,] 1 2 1</span></span>
+<span id="cb5-18"><a href="#cb5-18" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-19"><a href="#cb5-19" tabindex="-1"></a><span class="co">#&gt; Weights (w): </span></span>
+<span id="cb5-20"><a href="#cb5-20" tabindex="-1"></a><span class="co">#&gt; [1] 1</span></span></code></pre></div>
 <p>As one could expect, updating the signal with the vector <span class="math inline">\((4,7,7,9)\)</span> (the order of the input does
 not matter) leads to a degenerate mixture with <span class="math inline">\(\mathbf{y}^\ast = (4,7,9)\)</span> and <span class="math inline">\(M = \{ (1,2,1)\}\)</span>.</p>
 <p>Updating a non-empty process will have a different effect: suppose to
@@ -539,8 +545,9 @@ implies that <span class="math inline">\(n_j \leq m_j \ \forall j \in
 \mathbf{n}}(t)\]</span> and <span class="math inline">\(p_{\mathbf{m},
 \mathbf{n}}(t)\)</span> represents the probability of reaching <span class="math inline">\(\mathbf{n}\)</span> starting from <span class="math inline">\(\mathbf{m}\)</span> in a time <span class="math inline">\(t\)</span> for a <span class="math inline">\(K\)</span>-dimensional death process, as shown in
 <span class="citation">Tavaré (1984)</span>; however, the exact value of
-such probability, stated in <span class="citation">Papaspiliopoulos,
-Ruggiero, and Spanò (2016)</span> is <span class="math display">\[p_{\mathbf{m}, \mathbf{n}}(t)=
+such probability, stated in <span class="citation">Papaspiliopoulos et
+al. (2016)</span> is <span class="math display">\[p_{\mathbf{m},
+\mathbf{n}}(t)=
 \begin{cases}
         e^{-\lambda_{|\mathbf{m}|}t} \quad  &amp;\text{if} \ \mathbf{n}=
 \mathbf{m}\\
@@ -564,33 +571,35 @@ the formulae above.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>FVDDP</span>
 <span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="co">#&gt; theta: 1.28 </span></span>
 <span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="co">#&gt; P0.sample: function(x) rpois(x, 5)</span></span>
-<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="co">#&gt; P0.density/mass: function(x) dpois(x, 5)</span></span>
-<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a><span class="co">#&gt; is.atomic: TRUE </span></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="co">#&gt; P0.sample: function (x) </span></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="co">#&gt; rpois(x, 5)</span></span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="co">#&gt; P0.density/mass: function (x) </span></span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a><span class="co">#&gt; dpois(x, 5)</span></span>
 <span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a><span class="co">#&gt; Unique values (y.star): </span></span>
-<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a><span class="co">#&gt; [1] 4 7 9</span></span>
-<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a><span class="co">#&gt; Multiplicities (M): </span></span>
-<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a><span class="co">#&gt;       4 7 9</span></span>
-<span id="cb7-15"><a href="#cb7-15" tabindex="-1"></a><span class="co">#&gt;  [1,] 0 0 0</span></span>
-<span id="cb7-16"><a href="#cb7-16" tabindex="-1"></a><span class="co">#&gt;  [2,] 1 0 0</span></span>
-<span id="cb7-17"><a href="#cb7-17" tabindex="-1"></a><span class="co">#&gt;  [3,] 0 1 0</span></span>
-<span id="cb7-18"><a href="#cb7-18" tabindex="-1"></a><span class="co">#&gt;  [4,] 1 1 0</span></span>
-<span id="cb7-19"><a href="#cb7-19" tabindex="-1"></a><span class="co">#&gt;  [5,] 0 2 0</span></span>
-<span id="cb7-20"><a href="#cb7-20" tabindex="-1"></a><span class="co">#&gt;  [6,] 1 2 0</span></span>
-<span id="cb7-21"><a href="#cb7-21" tabindex="-1"></a><span class="co">#&gt;  [7,] 0 0 1</span></span>
-<span id="cb7-22"><a href="#cb7-22" tabindex="-1"></a><span class="co">#&gt;  [8,] 1 0 1</span></span>
-<span id="cb7-23"><a href="#cb7-23" tabindex="-1"></a><span class="co">#&gt;  [9,] 0 1 1</span></span>
-<span id="cb7-24"><a href="#cb7-24" tabindex="-1"></a><span class="co">#&gt; [10,] 1 1 1</span></span>
-<span id="cb7-25"><a href="#cb7-25" tabindex="-1"></a><span class="co">#&gt; [11,] 0 2 1</span></span>
-<span id="cb7-26"><a href="#cb7-26" tabindex="-1"></a><span class="co">#&gt; [12,] 1 2 1</span></span>
-<span id="cb7-27"><a href="#cb7-27" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb7-28"><a href="#cb7-28" tabindex="-1"></a><span class="co">#&gt; Weights (w): </span></span>
-<span id="cb7-29"><a href="#cb7-29" tabindex="-1"></a><span class="co">#&gt;  [1] 0.060274058 0.099035520 0.198071041 0.142898157 0.071449079 0.027252056</span></span>
-<span id="cb7-30"><a href="#cb7-30" tabindex="-1"></a><span class="co">#&gt;  [7] 0.099035520 0.071449079 0.142898157 0.054504111 0.027252056 0.005881167</span></span></code></pre></div>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a><span class="co">#&gt; is.atomic: TRUE </span></span>
+<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a><span class="co">#&gt; Unique values (y.star): </span></span>
+<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a><span class="co">#&gt; [1] 4 7 9</span></span>
+<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb7-15"><a href="#cb7-15" tabindex="-1"></a><span class="co">#&gt; Multiplicities (M): </span></span>
+<span id="cb7-16"><a href="#cb7-16" tabindex="-1"></a><span class="co">#&gt;       4 7 9</span></span>
+<span id="cb7-17"><a href="#cb7-17" tabindex="-1"></a><span class="co">#&gt;  [1,] 0 0 0</span></span>
+<span id="cb7-18"><a href="#cb7-18" tabindex="-1"></a><span class="co">#&gt;  [2,] 1 0 0</span></span>
+<span id="cb7-19"><a href="#cb7-19" tabindex="-1"></a><span class="co">#&gt;  [3,] 0 1 0</span></span>
+<span id="cb7-20"><a href="#cb7-20" tabindex="-1"></a><span class="co">#&gt;  [4,] 1 1 0</span></span>
+<span id="cb7-21"><a href="#cb7-21" tabindex="-1"></a><span class="co">#&gt;  [5,] 0 2 0</span></span>
+<span id="cb7-22"><a href="#cb7-22" tabindex="-1"></a><span class="co">#&gt;  [6,] 1 2 0</span></span>
+<span id="cb7-23"><a href="#cb7-23" tabindex="-1"></a><span class="co">#&gt;  [7,] 0 0 1</span></span>
+<span id="cb7-24"><a href="#cb7-24" tabindex="-1"></a><span class="co">#&gt;  [8,] 1 0 1</span></span>
+<span id="cb7-25"><a href="#cb7-25" tabindex="-1"></a><span class="co">#&gt;  [9,] 0 1 1</span></span>
+<span id="cb7-26"><a href="#cb7-26" tabindex="-1"></a><span class="co">#&gt; [10,] 1 1 1</span></span>
+<span id="cb7-27"><a href="#cb7-27" tabindex="-1"></a><span class="co">#&gt; [11,] 0 2 1</span></span>
+<span id="cb7-28"><a href="#cb7-28" tabindex="-1"></a><span class="co">#&gt; [12,] 1 2 1</span></span>
+<span id="cb7-29"><a href="#cb7-29" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb7-30"><a href="#cb7-30" tabindex="-1"></a><span class="co">#&gt; Weights (w): </span></span>
+<span id="cb7-31"><a href="#cb7-31" tabindex="-1"></a><span class="co">#&gt;  [1] 0.060274058 0.099035520 0.198071041 0.142898157 0.071449079 0.027252056</span></span>
+<span id="cb7-32"><a href="#cb7-32" tabindex="-1"></a><span class="co">#&gt;  [7] 0.099035520 0.071449079 0.142898157 0.054504111 0.027252056 0.005881167</span></span></code></pre></div>
 <p>The example shows the propagation of the signal introduced in the
 previous section, with <span class="math inline">\(t = 0.6\)</span>.
 Note that <code>y.star</code> does not vary. Also, note that in examples
@@ -601,34 +610,36 @@ characterized by the zero vector.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>FVDDP</span>
 <span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="co">#&gt; theta: 1.28 </span></span>
 <span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="co">#&gt; P0.sample: function(x) rpois(x, 5)</span></span>
-<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a><span class="co">#&gt; P0.density/mass: function(x) dpois(x, 5)</span></span>
-<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a><span class="co">#&gt; &lt;bytecode: 0x12b7a6180&gt;</span></span>
-<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a><span class="co">#&gt; is.atomic: TRUE </span></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="co">#&gt; P0.sample: function (x) </span></span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a><span class="co">#&gt; rpois(x, 5)</span></span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a><span class="co">#&gt; P0.density/mass: function (x) </span></span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a><span class="co">#&gt; dpois(x, 5)</span></span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a><span class="co">#&gt; &lt;bytecode: 0x1060452e0&gt;</span></span>
 <span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a><span class="co">#&gt; Unique values (y.star): </span></span>
-<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a><span class="co">#&gt; [1]  4  5  7  9 10</span></span>
-<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a><span class="co">#&gt; Multiplicities (M): </span></span>
-<span id="cb9-15"><a href="#cb9-15" tabindex="-1"></a><span class="co">#&gt;       4 5 7 9 10</span></span>
-<span id="cb9-16"><a href="#cb9-16" tabindex="-1"></a><span class="co">#&gt;  [1,] 1 1 2 0  2</span></span>
-<span id="cb9-17"><a href="#cb9-17" tabindex="-1"></a><span class="co">#&gt;  [2,] 2 1 2 0  2</span></span>
-<span id="cb9-18"><a href="#cb9-18" tabindex="-1"></a><span class="co">#&gt;  [3,] 1 1 3 0  2</span></span>
-<span id="cb9-19"><a href="#cb9-19" tabindex="-1"></a><span class="co">#&gt;  [4,] 2 1 3 0  2</span></span>
-<span id="cb9-20"><a href="#cb9-20" tabindex="-1"></a><span class="co">#&gt;  [5,] 1 1 4 0  2</span></span>
-<span id="cb9-21"><a href="#cb9-21" tabindex="-1"></a><span class="co">#&gt;  [6,] 2 1 4 0  2</span></span>
-<span id="cb9-22"><a href="#cb9-22" tabindex="-1"></a><span class="co">#&gt;  [7,] 1 1 2 1  2</span></span>
-<span id="cb9-23"><a href="#cb9-23" tabindex="-1"></a><span class="co">#&gt;  [8,] 2 1 2 1  2</span></span>
-<span id="cb9-24"><a href="#cb9-24" tabindex="-1"></a><span class="co">#&gt;  [9,] 1 1 3 1  2</span></span>
-<span id="cb9-25"><a href="#cb9-25" tabindex="-1"></a><span class="co">#&gt; [10,] 2 1 3 1  2</span></span>
-<span id="cb9-26"><a href="#cb9-26" tabindex="-1"></a><span class="co">#&gt; [11,] 1 1 4 1  2</span></span>
-<span id="cb9-27"><a href="#cb9-27" tabindex="-1"></a><span class="co">#&gt; [12,] 2 1 4 1  2</span></span>
-<span id="cb9-28"><a href="#cb9-28" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb9-29"><a href="#cb9-29" tabindex="-1"></a><span class="co">#&gt; Weights (w): </span></span>
-<span id="cb9-30"><a href="#cb9-30" tabindex="-1"></a><span class="co">#&gt;  [1] 0.032822343 0.051700651 0.302672433 0.327846322 0.083102652 0.061084451</span></span>
-<span id="cb9-31"><a href="#cb9-31" tabindex="-1"></a><span class="co">#&gt;  [7] 0.009482191 0.010270845 0.060128867 0.044197613 0.011203233 0.005488398</span></span></code></pre></div>
+<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a><span class="co">#&gt; is.atomic: TRUE </span></span>
+<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a><span class="co">#&gt; Unique values (y.star): </span></span>
+<span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a><span class="co">#&gt; [1]  4  5  7  9 10</span></span>
+<span id="cb9-15"><a href="#cb9-15" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb9-16"><a href="#cb9-16" tabindex="-1"></a><span class="co">#&gt; Multiplicities (M): </span></span>
+<span id="cb9-17"><a href="#cb9-17" tabindex="-1"></a><span class="co">#&gt;       4 5 7 9 10</span></span>
+<span id="cb9-18"><a href="#cb9-18" tabindex="-1"></a><span class="co">#&gt;  [1,] 1 1 2 0  2</span></span>
+<span id="cb9-19"><a href="#cb9-19" tabindex="-1"></a><span class="co">#&gt;  [2,] 2 1 2 0  2</span></span>
+<span id="cb9-20"><a href="#cb9-20" tabindex="-1"></a><span class="co">#&gt;  [3,] 1 1 3 0  2</span></span>
+<span id="cb9-21"><a href="#cb9-21" tabindex="-1"></a><span class="co">#&gt;  [4,] 2 1 3 0  2</span></span>
+<span id="cb9-22"><a href="#cb9-22" tabindex="-1"></a><span class="co">#&gt;  [5,] 1 1 4 0  2</span></span>
+<span id="cb9-23"><a href="#cb9-23" tabindex="-1"></a><span class="co">#&gt;  [6,] 2 1 4 0  2</span></span>
+<span id="cb9-24"><a href="#cb9-24" tabindex="-1"></a><span class="co">#&gt;  [7,] 1 1 2 1  2</span></span>
+<span id="cb9-25"><a href="#cb9-25" tabindex="-1"></a><span class="co">#&gt;  [8,] 2 1 2 1  2</span></span>
+<span id="cb9-26"><a href="#cb9-26" tabindex="-1"></a><span class="co">#&gt;  [9,] 1 1 3 1  2</span></span>
+<span id="cb9-27"><a href="#cb9-27" tabindex="-1"></a><span class="co">#&gt; [10,] 2 1 3 1  2</span></span>
+<span id="cb9-28"><a href="#cb9-28" tabindex="-1"></a><span class="co">#&gt; [11,] 1 1 4 1  2</span></span>
+<span id="cb9-29"><a href="#cb9-29" tabindex="-1"></a><span class="co">#&gt; [12,] 2 1 4 1  2</span></span>
+<span id="cb9-30"><a href="#cb9-30" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb9-31"><a href="#cb9-31" tabindex="-1"></a><span class="co">#&gt; Weights (w): </span></span>
+<span id="cb9-32"><a href="#cb9-32" tabindex="-1"></a><span class="co">#&gt;  [1] 0.032822343 0.051700651 0.302672433 0.327846322 0.083102652 0.061084451</span></span>
+<span id="cb9-33"><a href="#cb9-33" tabindex="-1"></a><span class="co">#&gt;  [7] 0.009482191 0.010270845 0.060128867 0.044197613 0.011203233 0.005488398</span></span></code></pre></div>
 <p>The latter chunk shows an application of <code>update()</code> on a
 larger process. A larger vector <code>y.new</code> may induce large
 variations in the weights. Being it of size <span class="math inline">\(3\)</span>, the example does not cause an
@@ -640,14 +651,15 @@ immediately recognizable effect.</p>
 to infer the state of the signal given observations from the past, the
 present and the future. In other words, one can estimate <span class="math inline">\(X_t\)</span> when <span class="math inline">\(t
 \leq t_n\)</span>, exploiting all collected data.</p>
-<p>To do so, it has been shown by <span class="citation">Ascolani,
-Lijoi, and Ruggiero (2023)</span> that it is required to create two
-processes. The first has to be propagated forward from <span class="math inline">\(t_0\)</span> to <span class="math inline">\(t-{i-1}\)</span> as in the previous sections; the
-second one has to be run backward using the same strategy: initialize
-and update it at <span class="math inline">\(t_n\)</span> and propagate
-it towards <span class="math inline">\(t_{n-1}\)</span> (with a positive
-time <span class="math inline">\(t_n - t_{n-1}\)</span> in the
-function), and sequentially update and propagate until <span class="math inline">\(t_{i+1}\)</span> is reached.</p>
+<p>To do so, it has been shown by <span class="citation">Ascolani et al.
+(2023)</span> that it is required to create two processes. The first has
+to be propagated forward from <span class="math inline">\(t_0\)</span>
+to <span class="math inline">\(t-{i-1}\)</span> as in the previous
+sections; the second one has to be run backward using the same strategy:
+initialize and update it at <span class="math inline">\(t_n\)</span> and
+propagate it towards <span class="math inline">\(t_{n-1}\)</span> (with
+a positive time <span class="math inline">\(t_n - t_{n-1}\)</span> in
+the function), and sequentially update and propagate until <span class="math inline">\(t_{i+1}\)</span> is reached.</p>
 <p>Doing this, one will get that <span class="math display">\[X_{t_{i-1}} \ |\ Y_0, \dots, Y_{i-1} \sim
 \sum_{\mathbf{n}_{i-1} \in M_{i-1}} u_{\mathbf{n}_{i-1}} \Pi_{\alpha +
 \sum_{j=1}^K n_{i-1,j}\delta_{y_j^\ast}}\]</span> and <span class="math display">\[X_{t_{i+1}} \ |\ Y_{i+1}, \dots,
@@ -718,14 +730,13 @@ p_{\mathbf{n}_{i-1}, \mathbf{k}_{i-1}}(t_i -
 t_{i-1})p_{\mathbf{n}_{i+1}, \mathbf{k}_{i+1}}(t_{i+1} - t_i)\]</span>
 is the joint transition probability from <span class="math inline">\(\mathbf{n}_{i-1}\)</span> to <span class="math inline">\(\mathbf{k}_{i-1}\)</span> in time <span class="math inline">\(t_i - t_{i-1}\)</span> and from <span class="math inline">\(\mathbf{n}_{i+1}\)</span> to <span class="math inline">\(\mathbf{k}_{i+1}\)</span> in time <span class="math inline">\(t_{i+1} - t_i\)</span> and <span class="math inline">\(m(\cdot)\)</span> is the marginal likelihood
 function of multiplicities in the atomic case.</p>
-<p>This peculiar structure, developed in <span class="citation">Ascolani, Lijoi, and Ruggiero (2023)</span>, can be
-better understood with some examples. They can be shown in this
-implementation with <code>smooth()</code>. The arguments are two latent
-signals (<code>fvddp.past</code> and <code>fvddp.future</code>), the
-positive times <span class="math inline">\(t_i - t_{i-1}\)</span>
-(<code>t.past</code>) and <span class="math inline">\(t_{i+1} -
-t_i\)</span> (<code>t.future</code>) and the data collected at time
-<span class="math inline">\(t_i\)</span> (<code>y.new</code>).</p>
+<p>This peculiar structure, developed in <span class="citation">Ascolani
+et al. (2023)</span>, can be better understood with some examples. They
+can be shown in this implementation with <code>smooth()</code>. The
+arguments are two latent signals (<code>fvddp.past</code> and
+<code>fvddp.future</code>), the positive times <span class="math inline">\(t_i - t_{i-1}\)</span> (<code>t.past</code>) and
+<span class="math inline">\(t_{i+1} - t_i\)</span>
+(<code>t.future</code>) and the data collected at time <span class="math inline">\(t_i\)</span> (<code>y.new</code>).</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>FVDDP_NONATOMIC <span class="ot">=</span> <span class="fu">initialize</span>(<span class="at">theta =</span> <span class="fl">0.7</span>, <span class="at">sampling.f =</span> <span class="cf">function</span>(x) <span class="fu">rbeta</span>(x, <span class="dv">4</span>, <span class="dv">7</span>),</span>
 <span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>                          <span class="at">density.f =</span> <span class="cf">function</span>(x) <span class="fu">dbeta</span>(x, <span class="dv">4</span>, <span class="dv">7</span>), <span class="at">atomic =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>FVDDP_PAST_NONATOMIC <span class="ot">=</span> <span class="fu">update</span>(<span class="at">fvddp =</span> FVDDP_NONATOMIC, <span class="at">y.new =</span> <span class="fu">c</span>(<span class="fl">0.210</span>, <span class="fl">0.635</span>, .<span class="dv">541</span>))</span>
@@ -740,23 +751,25 @@ propagation between the two updates).</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>FVDDP_SMOOTH_NONATOMIC</span>
 <span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="co">#&gt; theta: 0.7 </span></span>
 <span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a><span class="co">#&gt; P0.sample: function(x) rbeta(x, 4, 7)</span></span>
-<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a><span class="co">#&gt; P0.density/mass: function(x) dbeta(x, 4, 7)</span></span>
-<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a><span class="co">#&gt; is.atomic: FALSE </span></span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a><span class="co">#&gt; P0.sample: function (x) </span></span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a><span class="co">#&gt; rbeta(x, 4, 7)</span></span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a><span class="co">#&gt; P0.density/mass: function (x) </span></span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a><span class="co">#&gt; dbeta(x, 4, 7)</span></span>
 <span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a><span class="co">#&gt; Unique values (y.star): </span></span>
-<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a><span class="co">#&gt; [1] 0.210 0.479 0.541 0.635</span></span>
-<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb12-13"><a href="#cb12-13" tabindex="-1"></a><span class="co">#&gt; Multiplicities (M): </span></span>
-<span id="cb12-14"><a href="#cb12-14" tabindex="-1"></a><span class="co">#&gt;      0.21 0.479 0.541 0.635</span></span>
-<span id="cb12-15"><a href="#cb12-15" tabindex="-1"></a><span class="co">#&gt; [1,]    2     1     0     3</span></span>
-<span id="cb12-16"><a href="#cb12-16" tabindex="-1"></a><span class="co">#&gt; [2,]    2     1     1     3</span></span>
-<span id="cb12-17"><a href="#cb12-17" tabindex="-1"></a><span class="co">#&gt; [3,]    2     1     2     3</span></span>
-<span id="cb12-18"><a href="#cb12-18" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb12-19"><a href="#cb12-19" tabindex="-1"></a><span class="co">#&gt; Weights (w): </span></span>
-<span id="cb12-20"><a href="#cb12-20" tabindex="-1"></a><span class="co">#&gt; [1] 0.23344663 0.03392615 0.73262722</span></span></code></pre></div>
+<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a><span class="co">#&gt; is.atomic: FALSE </span></span>
+<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a><span class="co">#&gt; Unique values (y.star): </span></span>
+<span id="cb12-13"><a href="#cb12-13" tabindex="-1"></a><span class="co">#&gt; [1] 0.210 0.479 0.541 0.635</span></span>
+<span id="cb12-14"><a href="#cb12-14" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb12-15"><a href="#cb12-15" tabindex="-1"></a><span class="co">#&gt; Multiplicities (M): </span></span>
+<span id="cb12-16"><a href="#cb12-16" tabindex="-1"></a><span class="co">#&gt;      0.21 0.479 0.541 0.635</span></span>
+<span id="cb12-17"><a href="#cb12-17" tabindex="-1"></a><span class="co">#&gt; [1,]    2     1     0     3</span></span>
+<span id="cb12-18"><a href="#cb12-18" tabindex="-1"></a><span class="co">#&gt; [2,]    2     1     1     3</span></span>
+<span id="cb12-19"><a href="#cb12-19" tabindex="-1"></a><span class="co">#&gt; [3,]    2     1     2     3</span></span>
+<span id="cb12-20"><a href="#cb12-20" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb12-21"><a href="#cb12-21" tabindex="-1"></a><span class="co">#&gt; Weights (w): </span></span>
+<span id="cb12-22"><a href="#cb12-22" tabindex="-1"></a><span class="co">#&gt; [1] 0.23344663 0.03392615 0.73262722</span></span></code></pre></div>
 <p>Using the function on the two processes, it is possible to see that
 the structure described above for the nonatomic case causes a shrinkage
 of the mixture. Indeed, the set <span class="math inline">\(M\)</span>
@@ -777,42 +790,44 @@ the one referred to future observations is updated twice.</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>FVDDP_SMOOTH_ATOMIC</span>
 <span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="co">#&gt; theta: 0.7 </span></span>
 <span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a><span class="co">#&gt; P0.sample: function(x) rbeta(x, 10, 0.6)</span></span>
-<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a><span class="co">#&gt; P0.density/mass: function(x) dbinom(x, 10, 0.6)</span></span>
-<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a><span class="co">#&gt; &lt;bytecode: 0x129a106d8&gt;</span></span>
-<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a><span class="co">#&gt; is.atomic: TRUE </span></span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a><span class="co">#&gt; P0.sample: function (x) </span></span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a><span class="co">#&gt; rbeta(x, 10, 0.6)</span></span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a><span class="co">#&gt; P0.density/mass: function (x) </span></span>
+<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a><span class="co">#&gt; dbinom(x, 10, 0.6)</span></span>
+<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a><span class="co">#&gt; &lt;bytecode: 0x1276ee9e8&gt;</span></span>
 <span id="cb15-10"><a href="#cb15-10" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb15-11"><a href="#cb15-11" tabindex="-1"></a><span class="co">#&gt; Unique values (y.star): </span></span>
-<span id="cb15-12"><a href="#cb15-12" tabindex="-1"></a><span class="co">#&gt; [1] 2 4 5 6</span></span>
-<span id="cb15-13"><a href="#cb15-13" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb15-14"><a href="#cb15-14" tabindex="-1"></a><span class="co">#&gt; Multiplicities (M): </span></span>
-<span id="cb15-15"><a href="#cb15-15" tabindex="-1"></a><span class="co">#&gt;       2 4 5 6</span></span>
-<span id="cb15-16"><a href="#cb15-16" tabindex="-1"></a><span class="co">#&gt;  [1,] 1 1 0 1</span></span>
-<span id="cb15-17"><a href="#cb15-17" tabindex="-1"></a><span class="co">#&gt;  [2,] 1 1 0 2</span></span>
-<span id="cb15-18"><a href="#cb15-18" tabindex="-1"></a><span class="co">#&gt;  [3,] 1 1 0 3</span></span>
-<span id="cb15-19"><a href="#cb15-19" tabindex="-1"></a><span class="co">#&gt;  [4,] 1 1 1 1</span></span>
-<span id="cb15-20"><a href="#cb15-20" tabindex="-1"></a><span class="co">#&gt;  [5,] 1 1 1 2</span></span>
-<span id="cb15-21"><a href="#cb15-21" tabindex="-1"></a><span class="co">#&gt;  [6,] 1 1 1 3</span></span>
-<span id="cb15-22"><a href="#cb15-22" tabindex="-1"></a><span class="co">#&gt;  [7,] 1 1 2 1</span></span>
-<span id="cb15-23"><a href="#cb15-23" tabindex="-1"></a><span class="co">#&gt;  [8,] 1 1 2 2</span></span>
-<span id="cb15-24"><a href="#cb15-24" tabindex="-1"></a><span class="co">#&gt;  [9,] 1 1 2 3</span></span>
-<span id="cb15-25"><a href="#cb15-25" tabindex="-1"></a><span class="co">#&gt; [10,] 2 1 0 1</span></span>
-<span id="cb15-26"><a href="#cb15-26" tabindex="-1"></a><span class="co">#&gt; [11,] 2 1 0 2</span></span>
-<span id="cb15-27"><a href="#cb15-27" tabindex="-1"></a><span class="co">#&gt; [12,] 2 1 0 3</span></span>
-<span id="cb15-28"><a href="#cb15-28" tabindex="-1"></a><span class="co">#&gt; [13,] 2 1 1 1</span></span>
-<span id="cb15-29"><a href="#cb15-29" tabindex="-1"></a><span class="co">#&gt; [14,] 2 1 1 2</span></span>
-<span id="cb15-30"><a href="#cb15-30" tabindex="-1"></a><span class="co">#&gt; [15,] 2 1 1 3</span></span>
-<span id="cb15-31"><a href="#cb15-31" tabindex="-1"></a><span class="co">#&gt; [16,] 2 1 2 1</span></span>
-<span id="cb15-32"><a href="#cb15-32" tabindex="-1"></a><span class="co">#&gt; [17,] 2 1 2 2</span></span>
-<span id="cb15-33"><a href="#cb15-33" tabindex="-1"></a><span class="co">#&gt; [18,] 2 1 2 3</span></span>
-<span id="cb15-34"><a href="#cb15-34" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb15-35"><a href="#cb15-35" tabindex="-1"></a><span class="co">#&gt; Weights (w): </span></span>
-<span id="cb15-36"><a href="#cb15-36" tabindex="-1"></a><span class="co">#&gt;  [1] 0.0001721823 0.0025036150 0.0094628016 0.0002320301 0.0024384330</span></span>
-<span id="cb15-37"><a href="#cb15-37" tabindex="-1"></a><span class="co">#&gt;  [6] 0.0068287189 0.0004682311 0.0037328174 0.0075867038 0.0117827759</span></span>
-<span id="cb15-38"><a href="#cb15-38" tabindex="-1"></a><span class="co">#&gt; [11] 0.1266737735 0.3103950448 0.0112750878 0.0913256329 0.1717719912</span></span>
-<span id="cb15-39"><a href="#cb15-39" tabindex="-1"></a><span class="co">#&gt; [16] 0.0153587293 0.0979424891 0.1300489424</span></span></code></pre></div>
+<span id="cb15-11"><a href="#cb15-11" tabindex="-1"></a><span class="co">#&gt; is.atomic: TRUE </span></span>
+<span id="cb15-12"><a href="#cb15-12" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb15-13"><a href="#cb15-13" tabindex="-1"></a><span class="co">#&gt; Unique values (y.star): </span></span>
+<span id="cb15-14"><a href="#cb15-14" tabindex="-1"></a><span class="co">#&gt; [1] 2 4 5 6</span></span>
+<span id="cb15-15"><a href="#cb15-15" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb15-16"><a href="#cb15-16" tabindex="-1"></a><span class="co">#&gt; Multiplicities (M): </span></span>
+<span id="cb15-17"><a href="#cb15-17" tabindex="-1"></a><span class="co">#&gt;       2 4 5 6</span></span>
+<span id="cb15-18"><a href="#cb15-18" tabindex="-1"></a><span class="co">#&gt;  [1,] 1 1 0 1</span></span>
+<span id="cb15-19"><a href="#cb15-19" tabindex="-1"></a><span class="co">#&gt;  [2,] 1 1 0 2</span></span>
+<span id="cb15-20"><a href="#cb15-20" tabindex="-1"></a><span class="co">#&gt;  [3,] 1 1 0 3</span></span>
+<span id="cb15-21"><a href="#cb15-21" tabindex="-1"></a><span class="co">#&gt;  [4,] 1 1 1 1</span></span>
+<span id="cb15-22"><a href="#cb15-22" tabindex="-1"></a><span class="co">#&gt;  [5,] 1 1 1 2</span></span>
+<span id="cb15-23"><a href="#cb15-23" tabindex="-1"></a><span class="co">#&gt;  [6,] 1 1 1 3</span></span>
+<span id="cb15-24"><a href="#cb15-24" tabindex="-1"></a><span class="co">#&gt;  [7,] 1 1 2 1</span></span>
+<span id="cb15-25"><a href="#cb15-25" tabindex="-1"></a><span class="co">#&gt;  [8,] 1 1 2 2</span></span>
+<span id="cb15-26"><a href="#cb15-26" tabindex="-1"></a><span class="co">#&gt;  [9,] 1 1 2 3</span></span>
+<span id="cb15-27"><a href="#cb15-27" tabindex="-1"></a><span class="co">#&gt; [10,] 2 1 0 1</span></span>
+<span id="cb15-28"><a href="#cb15-28" tabindex="-1"></a><span class="co">#&gt; [11,] 2 1 0 2</span></span>
+<span id="cb15-29"><a href="#cb15-29" tabindex="-1"></a><span class="co">#&gt; [12,] 2 1 0 3</span></span>
+<span id="cb15-30"><a href="#cb15-30" tabindex="-1"></a><span class="co">#&gt; [13,] 2 1 1 1</span></span>
+<span id="cb15-31"><a href="#cb15-31" tabindex="-1"></a><span class="co">#&gt; [14,] 2 1 1 2</span></span>
+<span id="cb15-32"><a href="#cb15-32" tabindex="-1"></a><span class="co">#&gt; [15,] 2 1 1 3</span></span>
+<span id="cb15-33"><a href="#cb15-33" tabindex="-1"></a><span class="co">#&gt; [16,] 2 1 2 1</span></span>
+<span id="cb15-34"><a href="#cb15-34" tabindex="-1"></a><span class="co">#&gt; [17,] 2 1 2 2</span></span>
+<span id="cb15-35"><a href="#cb15-35" tabindex="-1"></a><span class="co">#&gt; [18,] 2 1 2 3</span></span>
+<span id="cb15-36"><a href="#cb15-36" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb15-37"><a href="#cb15-37" tabindex="-1"></a><span class="co">#&gt; Weights (w): </span></span>
+<span id="cb15-38"><a href="#cb15-38" tabindex="-1"></a><span class="co">#&gt;  [1] 0.0001721823 0.0025036150 0.0094628016 0.0002320301 0.0024384330</span></span>
+<span id="cb15-39"><a href="#cb15-39" tabindex="-1"></a><span class="co">#&gt;  [6] 0.0068287189 0.0004682311 0.0037328174 0.0075867038 0.0117827759</span></span>
+<span id="cb15-40"><a href="#cb15-40" tabindex="-1"></a><span class="co">#&gt; [11] 0.1266737735 0.3103950448 0.0112750878 0.0913256329 0.1717719912</span></span>
+<span id="cb15-41"><a href="#cb15-41" tabindex="-1"></a><span class="co">#&gt; [16] 0.0153587293 0.0979424891 0.1300489424</span></span></code></pre></div>
 <p>In this case, the mixture is clearly bigger. The reason is that when
 <span class="math inline">\(P_0\)</span> is atomic, the set <span class="math inline">\(D^{\mathbf{n}_{i-1}, \mathbf{n}_{i+1}}\)</span>
 does not put constraints based on the appearance of shared values across
@@ -828,10 +843,11 @@ that as the number of weights increases, many of them become almost
 negligible.</p>
 <p>In order to avoid long computations, it is possible to use
 <code>approx.propagate()</code>: it reproduces the propagation of the
-signal by means of Monte Carlo method. The idea, proposed by <span class="citation">Ascolani, Lijoi, and Ruggiero (2021)</span>, is to
-mimic the evolution of the <span class="math inline">\(K\)</span>-dimensional death process using a
-one-dimensional one, and then extracting a multidimensional vector with
-a multivariate hypergeometic distributions.</p>
+signal by means of Monte Carlo method. The idea, proposed by <span class="citation">Ascolani et al. (2021)</span>, is to mimic the
+evolution of the <span class="math inline">\(K\)</span>-dimensional
+death process using a one-dimensional one, and then extracting a
+multidimensional vector with a multivariate hypergeometic
+distributions.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>FVDDP <span class="ot">=</span><span class="fu">initialize</span>(<span class="at">theta =</span> <span class="dv">3</span>, <span class="at">sampling.f=</span> <span class="cf">function</span>(x) <span class="fu">rnorm</span>(x, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">3</span>),</span>
 <span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>                  <span class="at">density.f =</span> <span class="cf">function</span>(x) <span class="fu">dnorm</span>(x, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">3</span>), <span class="at">atomic =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a>FVDDP <span class="ot">=</span> <span class="fu">update</span>(<span class="at">fvddp =</span> FVDDP, <span class="at">y.new =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.145</span>, <span class="fl">0.553</span>, <span class="fl">0.553</span>, <span class="fl">0.553</span>))</span></code></pre></div>
@@ -843,28 +859,30 @@ specify the number of samples <code>N</code> to be drawn.</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>FVDDP_APPR_PROP</span>
 <span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="co">#&gt; theta: 3 </span></span>
 <span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a><span class="co">#&gt; P0.sample: function(x) rnorm(x, -1, 3)</span></span>
-<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a><span class="co">#&gt; P0.density/mass: function(x) dnorm(x, -1, 3)</span></span>
-<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a><span class="co">#&gt; is.atomic: FALSE </span></span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a><span class="co">#&gt; P0.sample: function (x) </span></span>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a><span class="co">#&gt; rnorm(x, -1, 3)</span></span>
+<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a><span class="co">#&gt; P0.density/mass: function (x) </span></span>
+<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a><span class="co">#&gt; dnorm(x, -1, 3)</span></span>
 <span id="cb18-9"><a href="#cb18-9" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb18-10"><a href="#cb18-10" tabindex="-1"></a><span class="co">#&gt; Unique values (y.star): </span></span>
-<span id="cb18-11"><a href="#cb18-11" tabindex="-1"></a><span class="co">#&gt; [1] -1.145  0.553</span></span>
-<span id="cb18-12"><a href="#cb18-12" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb18-13"><a href="#cb18-13" tabindex="-1"></a><span class="co">#&gt; Multiplicities (M): </span></span>
-<span id="cb18-14"><a href="#cb18-14" tabindex="-1"></a><span class="co">#&gt;      -1.145 0.553</span></span>
-<span id="cb18-15"><a href="#cb18-15" tabindex="-1"></a><span class="co">#&gt; [1,]      0     0</span></span>
-<span id="cb18-16"><a href="#cb18-16" tabindex="-1"></a><span class="co">#&gt; [2,]      0     1</span></span>
-<span id="cb18-17"><a href="#cb18-17" tabindex="-1"></a><span class="co">#&gt; [3,]      0     2</span></span>
-<span id="cb18-18"><a href="#cb18-18" tabindex="-1"></a><span class="co">#&gt; [4,]      0     3</span></span>
-<span id="cb18-19"><a href="#cb18-19" tabindex="-1"></a><span class="co">#&gt; [5,]      1     0</span></span>
-<span id="cb18-20"><a href="#cb18-20" tabindex="-1"></a><span class="co">#&gt; [6,]      1     1</span></span>
-<span id="cb18-21"><a href="#cb18-21" tabindex="-1"></a><span class="co">#&gt; [7,]      1     2</span></span>
-<span id="cb18-22"><a href="#cb18-22" tabindex="-1"></a><span class="co">#&gt; [8,]      1     3</span></span>
-<span id="cb18-23"><a href="#cb18-23" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb18-24"><a href="#cb18-24" tabindex="-1"></a><span class="co">#&gt; Weights (w): </span></span>
-<span id="cb18-25"><a href="#cb18-25" tabindex="-1"></a><span class="co">#&gt; [1] 0.13530 0.33260 0.17440 0.02000 0.10310 0.17210 0.05785 0.00465</span></span></code></pre></div>
+<span id="cb18-10"><a href="#cb18-10" tabindex="-1"></a><span class="co">#&gt; is.atomic: FALSE </span></span>
+<span id="cb18-11"><a href="#cb18-11" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb18-12"><a href="#cb18-12" tabindex="-1"></a><span class="co">#&gt; Unique values (y.star): </span></span>
+<span id="cb18-13"><a href="#cb18-13" tabindex="-1"></a><span class="co">#&gt; [1] -1.145  0.553</span></span>
+<span id="cb18-14"><a href="#cb18-14" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb18-15"><a href="#cb18-15" tabindex="-1"></a><span class="co">#&gt; Multiplicities (M): </span></span>
+<span id="cb18-16"><a href="#cb18-16" tabindex="-1"></a><span class="co">#&gt;      -1.145 0.553</span></span>
+<span id="cb18-17"><a href="#cb18-17" tabindex="-1"></a><span class="co">#&gt; [1,]      0     0</span></span>
+<span id="cb18-18"><a href="#cb18-18" tabindex="-1"></a><span class="co">#&gt; [2,]      0     1</span></span>
+<span id="cb18-19"><a href="#cb18-19" tabindex="-1"></a><span class="co">#&gt; [3,]      0     2</span></span>
+<span id="cb18-20"><a href="#cb18-20" tabindex="-1"></a><span class="co">#&gt; [4,]      0     3</span></span>
+<span id="cb18-21"><a href="#cb18-21" tabindex="-1"></a><span class="co">#&gt; [5,]      1     0</span></span>
+<span id="cb18-22"><a href="#cb18-22" tabindex="-1"></a><span class="co">#&gt; [6,]      1     1</span></span>
+<span id="cb18-23"><a href="#cb18-23" tabindex="-1"></a><span class="co">#&gt; [7,]      1     2</span></span>
+<span id="cb18-24"><a href="#cb18-24" tabindex="-1"></a><span class="co">#&gt; [8,]      1     3</span></span>
+<span id="cb18-25"><a href="#cb18-25" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb18-26"><a href="#cb18-26" tabindex="-1"></a><span class="co">#&gt; Weights (w): </span></span>
+<span id="cb18-27"><a href="#cb18-27" tabindex="-1"></a><span class="co">#&gt; [1] 0.13530 0.33260 0.17440 0.02000 0.10310 0.17210 0.05785 0.00465</span></span></code></pre></div>
 <p>The results is again an <code>fvddp</code> object. In order to
 measure the accuracy of such approximation, one has to compute the exact
 output of the propagation, again with time <span class="math inline">\(t=0.45\)</span>.</p>
@@ -897,42 +915,44 @@ exact smoothing.</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>FVDDP_SMOOTH_APPR</span>
 <span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a><span class="co">#&gt; theta: 0.7 </span></span>
 <span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a><span class="co">#&gt; P0.sample: function(x) rbeta(x, 10, 0.6)</span></span>
-<span id="cb22-5"><a href="#cb22-5" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb22-6"><a href="#cb22-6" tabindex="-1"></a><span class="co">#&gt; P0.density/mass: function(x) dbinom(x, 10, 0.6)</span></span>
-<span id="cb22-7"><a href="#cb22-7" tabindex="-1"></a><span class="co">#&gt; &lt;bytecode: 0x129a106d8&gt;</span></span>
-<span id="cb22-8"><a href="#cb22-8" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb22-9"><a href="#cb22-9" tabindex="-1"></a><span class="co">#&gt; is.atomic: TRUE </span></span>
+<span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a><span class="co">#&gt; P0.sample: function (x) </span></span>
+<span id="cb22-5"><a href="#cb22-5" tabindex="-1"></a><span class="co">#&gt; rbeta(x, 10, 0.6)</span></span>
+<span id="cb22-6"><a href="#cb22-6" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb22-7"><a href="#cb22-7" tabindex="-1"></a><span class="co">#&gt; P0.density/mass: function (x) </span></span>
+<span id="cb22-8"><a href="#cb22-8" tabindex="-1"></a><span class="co">#&gt; dbinom(x, 10, 0.6)</span></span>
+<span id="cb22-9"><a href="#cb22-9" tabindex="-1"></a><span class="co">#&gt; &lt;bytecode: 0x1276ee9e8&gt;</span></span>
 <span id="cb22-10"><a href="#cb22-10" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb22-11"><a href="#cb22-11" tabindex="-1"></a><span class="co">#&gt; Unique values (y.star): </span></span>
-<span id="cb22-12"><a href="#cb22-12" tabindex="-1"></a><span class="co">#&gt; [1] 2 4 5 6</span></span>
-<span id="cb22-13"><a href="#cb22-13" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb22-14"><a href="#cb22-14" tabindex="-1"></a><span class="co">#&gt; Multiplicities (M): </span></span>
-<span id="cb22-15"><a href="#cb22-15" tabindex="-1"></a><span class="co">#&gt;       2 4 5 6</span></span>
-<span id="cb22-16"><a href="#cb22-16" tabindex="-1"></a><span class="co">#&gt;  [1,] 1 1 0 1</span></span>
-<span id="cb22-17"><a href="#cb22-17" tabindex="-1"></a><span class="co">#&gt;  [2,] 1 1 0 2</span></span>
-<span id="cb22-18"><a href="#cb22-18" tabindex="-1"></a><span class="co">#&gt;  [3,] 1 1 0 3</span></span>
-<span id="cb22-19"><a href="#cb22-19" tabindex="-1"></a><span class="co">#&gt;  [4,] 1 1 1 1</span></span>
-<span id="cb22-20"><a href="#cb22-20" tabindex="-1"></a><span class="co">#&gt;  [5,] 1 1 1 2</span></span>
-<span id="cb22-21"><a href="#cb22-21" tabindex="-1"></a><span class="co">#&gt;  [6,] 1 1 1 3</span></span>
-<span id="cb22-22"><a href="#cb22-22" tabindex="-1"></a><span class="co">#&gt;  [7,] 1 1 2 1</span></span>
-<span id="cb22-23"><a href="#cb22-23" tabindex="-1"></a><span class="co">#&gt;  [8,] 1 1 2 2</span></span>
-<span id="cb22-24"><a href="#cb22-24" tabindex="-1"></a><span class="co">#&gt;  [9,] 1 1 2 3</span></span>
-<span id="cb22-25"><a href="#cb22-25" tabindex="-1"></a><span class="co">#&gt; [10,] 2 1 0 1</span></span>
-<span id="cb22-26"><a href="#cb22-26" tabindex="-1"></a><span class="co">#&gt; [11,] 2 1 0 2</span></span>
-<span id="cb22-27"><a href="#cb22-27" tabindex="-1"></a><span class="co">#&gt; [12,] 2 1 0 3</span></span>
-<span id="cb22-28"><a href="#cb22-28" tabindex="-1"></a><span class="co">#&gt; [13,] 2 1 1 1</span></span>
-<span id="cb22-29"><a href="#cb22-29" tabindex="-1"></a><span class="co">#&gt; [14,] 2 1 1 2</span></span>
-<span id="cb22-30"><a href="#cb22-30" tabindex="-1"></a><span class="co">#&gt; [15,] 2 1 1 3</span></span>
-<span id="cb22-31"><a href="#cb22-31" tabindex="-1"></a><span class="co">#&gt; [16,] 2 1 2 1</span></span>
-<span id="cb22-32"><a href="#cb22-32" tabindex="-1"></a><span class="co">#&gt; [17,] 2 1 2 2</span></span>
-<span id="cb22-33"><a href="#cb22-33" tabindex="-1"></a><span class="co">#&gt; [18,] 2 1 2 3</span></span>
-<span id="cb22-34"><a href="#cb22-34" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb22-35"><a href="#cb22-35" tabindex="-1"></a><span class="co">#&gt; Weights (w): </span></span>
-<span id="cb22-36"><a href="#cb22-36" tabindex="-1"></a><span class="co">#&gt;  [1] 0.0002318445 0.0032076427 0.0117206721 0.0002089701 0.0021740870</span></span>
-<span id="cb22-37"><a href="#cb22-37" tabindex="-1"></a><span class="co">#&gt;  [6] 0.0057754325 0.0003174570 0.0025240938 0.0051318324 0.0161197332</span></span>
-<span id="cb22-38"><a href="#cb22-38" tabindex="-1"></a><span class="co">#&gt; [11] 0.1568137178 0.3993952863 0.0088537112 0.0776609913 0.1427394035</span></span>
-<span id="cb22-39"><a href="#cb22-39" tabindex="-1"></a><span class="co">#&gt; [16] 0.0102407155 0.0676997460 0.0891846631</span></span></code></pre></div>
+<span id="cb22-11"><a href="#cb22-11" tabindex="-1"></a><span class="co">#&gt; is.atomic: TRUE </span></span>
+<span id="cb22-12"><a href="#cb22-12" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb22-13"><a href="#cb22-13" tabindex="-1"></a><span class="co">#&gt; Unique values (y.star): </span></span>
+<span id="cb22-14"><a href="#cb22-14" tabindex="-1"></a><span class="co">#&gt; [1] 2 4 5 6</span></span>
+<span id="cb22-15"><a href="#cb22-15" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb22-16"><a href="#cb22-16" tabindex="-1"></a><span class="co">#&gt; Multiplicities (M): </span></span>
+<span id="cb22-17"><a href="#cb22-17" tabindex="-1"></a><span class="co">#&gt;       2 4 5 6</span></span>
+<span id="cb22-18"><a href="#cb22-18" tabindex="-1"></a><span class="co">#&gt;  [1,] 1 1 0 1</span></span>
+<span id="cb22-19"><a href="#cb22-19" tabindex="-1"></a><span class="co">#&gt;  [2,] 1 1 0 2</span></span>
+<span id="cb22-20"><a href="#cb22-20" tabindex="-1"></a><span class="co">#&gt;  [3,] 1 1 0 3</span></span>
+<span id="cb22-21"><a href="#cb22-21" tabindex="-1"></a><span class="co">#&gt;  [4,] 1 1 1 1</span></span>
+<span id="cb22-22"><a href="#cb22-22" tabindex="-1"></a><span class="co">#&gt;  [5,] 1 1 1 2</span></span>
+<span id="cb22-23"><a href="#cb22-23" tabindex="-1"></a><span class="co">#&gt;  [6,] 1 1 1 3</span></span>
+<span id="cb22-24"><a href="#cb22-24" tabindex="-1"></a><span class="co">#&gt;  [7,] 1 1 2 1</span></span>
+<span id="cb22-25"><a href="#cb22-25" tabindex="-1"></a><span class="co">#&gt;  [8,] 1 1 2 2</span></span>
+<span id="cb22-26"><a href="#cb22-26" tabindex="-1"></a><span class="co">#&gt;  [9,] 1 1 2 3</span></span>
+<span id="cb22-27"><a href="#cb22-27" tabindex="-1"></a><span class="co">#&gt; [10,] 2 1 0 1</span></span>
+<span id="cb22-28"><a href="#cb22-28" tabindex="-1"></a><span class="co">#&gt; [11,] 2 1 0 2</span></span>
+<span id="cb22-29"><a href="#cb22-29" tabindex="-1"></a><span class="co">#&gt; [12,] 2 1 0 3</span></span>
+<span id="cb22-30"><a href="#cb22-30" tabindex="-1"></a><span class="co">#&gt; [13,] 2 1 1 1</span></span>
+<span id="cb22-31"><a href="#cb22-31" tabindex="-1"></a><span class="co">#&gt; [14,] 2 1 1 2</span></span>
+<span id="cb22-32"><a href="#cb22-32" tabindex="-1"></a><span class="co">#&gt; [15,] 2 1 1 3</span></span>
+<span id="cb22-33"><a href="#cb22-33" tabindex="-1"></a><span class="co">#&gt; [16,] 2 1 2 1</span></span>
+<span id="cb22-34"><a href="#cb22-34" tabindex="-1"></a><span class="co">#&gt; [17,] 2 1 2 2</span></span>
+<span id="cb22-35"><a href="#cb22-35" tabindex="-1"></a><span class="co">#&gt; [18,] 2 1 2 3</span></span>
+<span id="cb22-36"><a href="#cb22-36" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb22-37"><a href="#cb22-37" tabindex="-1"></a><span class="co">#&gt; Weights (w): </span></span>
+<span id="cb22-38"><a href="#cb22-38" tabindex="-1"></a><span class="co">#&gt;  [1] 0.0002318445 0.0032076427 0.0117206721 0.0002089701 0.0021740870</span></span>
+<span id="cb22-39"><a href="#cb22-39" tabindex="-1"></a><span class="co">#&gt;  [6] 0.0057754325 0.0003174570 0.0025240938 0.0051318324 0.0161197332</span></span>
+<span id="cb22-40"><a href="#cb22-40" tabindex="-1"></a><span class="co">#&gt; [11] 0.1568137178 0.3993952863 0.0088537112 0.0776609913 0.1427394035</span></span>
+<span id="cb22-41"><a href="#cb22-41" tabindex="-1"></a><span class="co">#&gt; [16] 0.0102407155 0.0676997460 0.0891846631</span></span></code></pre></div>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="fu">error.estimate</span>(FVDDP_SMOOTH_ATOMIC, FVDDP_SMOOTH_APPR)</span>
 <span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a><span class="co">#&gt;  [1] 5.966216e-05 7.040276e-04 2.257871e-03 2.305999e-05 2.643460e-04</span></span>
 <span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a><span class="co">#&gt;  [6] 1.053286e-03 1.507740e-04 1.208724e-03 2.454871e-03 4.336957e-03</span></span>
@@ -952,31 +972,33 @@ prevously calculated, fixing <span class="math inline">\(\varepsilon =
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a>PRUNED</span>
 <span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a><span class="co">#&gt; theta: 0.7 </span></span>
 <span id="cb25-3"><a href="#cb25-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb25-4"><a href="#cb25-4" tabindex="-1"></a><span class="co">#&gt; P0.sample: function(x) rbeta(x, 10, 0.6)</span></span>
-<span id="cb25-5"><a href="#cb25-5" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb25-6"><a href="#cb25-6" tabindex="-1"></a><span class="co">#&gt; P0.density/mass: function(x) dbinom(x, 10, 0.6)</span></span>
-<span id="cb25-7"><a href="#cb25-7" tabindex="-1"></a><span class="co">#&gt; &lt;bytecode: 0x129a106d8&gt;</span></span>
-<span id="cb25-8"><a href="#cb25-8" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb25-9"><a href="#cb25-9" tabindex="-1"></a><span class="co">#&gt; is.atomic: TRUE </span></span>
+<span id="cb25-4"><a href="#cb25-4" tabindex="-1"></a><span class="co">#&gt; P0.sample: function (x) </span></span>
+<span id="cb25-5"><a href="#cb25-5" tabindex="-1"></a><span class="co">#&gt; rbeta(x, 10, 0.6)</span></span>
+<span id="cb25-6"><a href="#cb25-6" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb25-7"><a href="#cb25-7" tabindex="-1"></a><span class="co">#&gt; P0.density/mass: function (x) </span></span>
+<span id="cb25-8"><a href="#cb25-8" tabindex="-1"></a><span class="co">#&gt; dbinom(x, 10, 0.6)</span></span>
+<span id="cb25-9"><a href="#cb25-9" tabindex="-1"></a><span class="co">#&gt; &lt;bytecode: 0x1276ee9e8&gt;</span></span>
 <span id="cb25-10"><a href="#cb25-10" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb25-11"><a href="#cb25-11" tabindex="-1"></a><span class="co">#&gt; Unique values (y.star): </span></span>
-<span id="cb25-12"><a href="#cb25-12" tabindex="-1"></a><span class="co">#&gt; [1] 2 4 5 6</span></span>
-<span id="cb25-13"><a href="#cb25-13" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb25-14"><a href="#cb25-14" tabindex="-1"></a><span class="co">#&gt; Multiplicities (M): </span></span>
-<span id="cb25-15"><a href="#cb25-15" tabindex="-1"></a><span class="co">#&gt;       2 4 5 6</span></span>
-<span id="cb25-16"><a href="#cb25-16" tabindex="-1"></a><span class="co">#&gt;  [1,] 2 1 0 1</span></span>
-<span id="cb25-17"><a href="#cb25-17" tabindex="-1"></a><span class="co">#&gt;  [2,] 2 1 0 2</span></span>
-<span id="cb25-18"><a href="#cb25-18" tabindex="-1"></a><span class="co">#&gt;  [3,] 2 1 0 3</span></span>
-<span id="cb25-19"><a href="#cb25-19" tabindex="-1"></a><span class="co">#&gt;  [4,] 2 1 1 1</span></span>
-<span id="cb25-20"><a href="#cb25-20" tabindex="-1"></a><span class="co">#&gt;  [5,] 2 1 1 2</span></span>
-<span id="cb25-21"><a href="#cb25-21" tabindex="-1"></a><span class="co">#&gt;  [6,] 2 1 1 3</span></span>
-<span id="cb25-22"><a href="#cb25-22" tabindex="-1"></a><span class="co">#&gt;  [7,] 2 1 2 1</span></span>
-<span id="cb25-23"><a href="#cb25-23" tabindex="-1"></a><span class="co">#&gt;  [8,] 2 1 2 2</span></span>
-<span id="cb25-24"><a href="#cb25-24" tabindex="-1"></a><span class="co">#&gt;  [9,] 2 1 2 3</span></span>
-<span id="cb25-25"><a href="#cb25-25" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb25-26"><a href="#cb25-26" tabindex="-1"></a><span class="co">#&gt; Weights (w): </span></span>
-<span id="cb25-27"><a href="#cb25-27" tabindex="-1"></a><span class="co">#&gt; [1] 0.01219024 0.13105433 0.32112895 0.01166500 0.09448380 0.17771211 0.01588986</span></span>
-<span id="cb25-28"><a href="#cb25-28" tabindex="-1"></a><span class="co">#&gt; [8] 0.10132948 0.13454622</span></span></code></pre></div>
+<span id="cb25-11"><a href="#cb25-11" tabindex="-1"></a><span class="co">#&gt; is.atomic: TRUE </span></span>
+<span id="cb25-12"><a href="#cb25-12" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb25-13"><a href="#cb25-13" tabindex="-1"></a><span class="co">#&gt; Unique values (y.star): </span></span>
+<span id="cb25-14"><a href="#cb25-14" tabindex="-1"></a><span class="co">#&gt; [1] 2 4 5 6</span></span>
+<span id="cb25-15"><a href="#cb25-15" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb25-16"><a href="#cb25-16" tabindex="-1"></a><span class="co">#&gt; Multiplicities (M): </span></span>
+<span id="cb25-17"><a href="#cb25-17" tabindex="-1"></a><span class="co">#&gt;       2 4 5 6</span></span>
+<span id="cb25-18"><a href="#cb25-18" tabindex="-1"></a><span class="co">#&gt;  [1,] 2 1 0 1</span></span>
+<span id="cb25-19"><a href="#cb25-19" tabindex="-1"></a><span class="co">#&gt;  [2,] 2 1 0 2</span></span>
+<span id="cb25-20"><a href="#cb25-20" tabindex="-1"></a><span class="co">#&gt;  [3,] 2 1 0 3</span></span>
+<span id="cb25-21"><a href="#cb25-21" tabindex="-1"></a><span class="co">#&gt;  [4,] 2 1 1 1</span></span>
+<span id="cb25-22"><a href="#cb25-22" tabindex="-1"></a><span class="co">#&gt;  [5,] 2 1 1 2</span></span>
+<span id="cb25-23"><a href="#cb25-23" tabindex="-1"></a><span class="co">#&gt;  [6,] 2 1 1 3</span></span>
+<span id="cb25-24"><a href="#cb25-24" tabindex="-1"></a><span class="co">#&gt;  [7,] 2 1 2 1</span></span>
+<span id="cb25-25"><a href="#cb25-25" tabindex="-1"></a><span class="co">#&gt;  [8,] 2 1 2 2</span></span>
+<span id="cb25-26"><a href="#cb25-26" tabindex="-1"></a><span class="co">#&gt;  [9,] 2 1 2 3</span></span>
+<span id="cb25-27"><a href="#cb25-27" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb25-28"><a href="#cb25-28" tabindex="-1"></a><span class="co">#&gt; Weights (w): </span></span>
+<span id="cb25-29"><a href="#cb25-29" tabindex="-1"></a><span class="co">#&gt; [1] 0.01219024 0.13105433 0.32112895 0.01166500 0.09448380 0.17771211 0.01588986</span></span>
+<span id="cb25-30"><a href="#cb25-30" tabindex="-1"></a><span class="co">#&gt; [8] 0.10132948 0.13454622</span></span></code></pre></div>
 <p>In this context, the treshold is insanely high; this is done for the
 unique purpose of showing how the function works; in the practical use
 of the package, a reasonable <span class="math inline">\(\varepsilon\)</span> is between <span class="math inline">\(10^{-9}\)</span> and the machine epsilon of the
@@ -1025,7 +1047,7 @@ however, it is sufficient to say that predictive structure is nothing
 but the sequential use of posterior sampling and update. In fact, a
 value is repeatedly drawn from the mixture and it is incorporated within
 each vector <span class="math inline">\(\mathbf{m}\in M\)</span> via an
-update. A full description of this mechanism was developed by <span class="citation">Ascolani, Lijoi, and Ruggiero (2021)</span>.</p>
+update. A full description of this mechanism was developed by <span class="citation">Ascolani et al. (2021)</span>.</p>
 <p>This is implemented efficiently via <code>predictive.struct()</code>;
 the arguments are the same as in <code>posterior.sample()</code>.</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">predictive.struct</span>(<span class="at">fvddp =</span> FVDDP_EXACT_PROP, <span class="at">N =</span> <span class="dv">100</span>)</span></code></pre></div>
@@ -1052,8 +1074,9 @@ Fleming–Viot-driven dependent Dirichlet processes</span>.”</span>
 <em>Bayesian Analysis</em> 16 (2): 371–95. <a href="https://doi.org/10.1214/20-BA1206">https://doi.org/10.1214/20-BA1206</a>.
 </div>
 <div id="ref-AscolaniLijoiRuggiero2023" class="csl-entry">
-———. 2023. <span>“<span class="nocase">Smoothing distributions for
-conditional Fleming–Viot and Dawson–Watanabe diffusions</span>.”</span>
+Ascolani, Filippo, Antonio Lijoi, and Matteo Ruggiero. 2023.
+<span>“<span class="nocase">Smoothing distributions for conditional
+Fleming–Viot and Dawson–Watanabe diffusions</span>.”</span>
 <em>Bernoulli</em> 29 (2): 1410–34. <a href="https://doi.org/10.3150/22-BEJ1504">https://doi.org/10.3150/22-BEJ1504</a>.
 </div>
 <div id="ref-BlackwellMacQueen1973" class="csl-entry">

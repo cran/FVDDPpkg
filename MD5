@@ -1,4 +1,4 @@
-4083f74ef892f5ca924725fa1c96f06d *DESCRIPTION
+b40161e966fc732fa09abcdb3242ca2f *DESCRIPTION
 af9457eaa24a71c4a5a0831a6b8a2069 *NAMESPACE
 4dac86e16a69025dadee3487cbb5e65f *R/RcppExports.R
 317933410b9b6adc844e2614e70ead55 *R/approximatepropagateC++.R
@@ -15,14 +15,15 @@ dabb8eaaf593306d9192322b1e89bd20 *R/print.R
 78fad2845fed6930d23ed82879bde56c *R/smoothC++.R
 ea1cd1b1bac7790286b246faa08b870a *R/summary.R
 be08f4562382410a7844bb4bccfb9e79 *R/update.R
-bf86cbd3cfd787c261540ead161a0e75 *README.md
-4527045002d1ee785da8c2fe7e572ff0 *build/partial.rdb
-60955aaf5664abce8f296e67d545cca0 *build/vignette.rds
+de3a986b4e77b6bf0859c78adc750f9c *README.md
+5a2d676dba03cb2a701a5f7b667ba261 *build/partial.rdb
+55c0886b90cb8359917c8b86bee00db1 *build/vignette.rds
+f917df7cdea49b0235c46ac700556c61 *inst/CITATION
 b234ee4d69f5fce4486a80fdaf4a4263 *inst/LICENSE.txt
 42db556b7b07c7f70ff442e392ffd53c *inst/REFERENCES.bib
 9838f6f0f3542035ca41034dfaeec353 *inst/doc/FVDDPpkg.R
 e46629d9c1c841509c1a6f48debe0b9a *inst/doc/FVDDPpkg.Rmd
-d0b08401d890002b4f15dc45c550d989 *inst/doc/FVDDPpkg.html
+64731082d949feb5e62d31767fb892db *inst/doc/FVDDPpkg.html
 cedf6f0a5bf6a1143e2f7f980f5b2cc0 *man/approx.propagate.Rd
 c73204c5f5ceb191a4246bd9a8de9ebf *man/approx.smooth.Rd
 286185c3706eaef37728aea5e4fd25e3 *man/error.estimate.Rd
@@ -36,7 +37,7 @@ b1c415b6ab2d43c6e3f0593dd43aa4cb *man/prune.Rd
 7c183254d7c5d932d8eaae8c62527147 *man/smooth.Rd
 c9351082f2bcfd08c31da01e62ef308f *man/summary.fvddp.Rd
 919c676b8c446cbc26bb79df6a0d7920 *man/update.Rd
-e69a6d10a6686e60d2d1b654b2be735c *src/C++FVDDP.cpp
+b6d93517db6195e29a393ab3f0c1ef45 *src/C++FVDDP.cpp
 c6491dbba2debaafe121b83eb8299434 *src/RcppExports.cpp
 e46629d9c1c841509c1a6f48debe0b9a *vignettes/FVDDPpkg.Rmd
 9d1a70bbe80abd1e72cc60f5429d2fde *vignettes/REFERENCES.bib
